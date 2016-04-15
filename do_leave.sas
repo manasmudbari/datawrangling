@@ -1,0 +1,10 @@
+data leave_it;
+   Interest = .15;
+   Total = 100;
+   do Year = 1 to 100;
+      Total = Total + Interest*Total;
+      output;
+      if Total ge 200 then leave;
+   end;
+   format Total dollar10.2;
+run;
