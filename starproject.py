@@ -7,7 +7,6 @@ Created on Wed Aug 17 18:19:26 2016
 
 ##----Importing Libraries
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 from urllib2 import Request, urlopen
