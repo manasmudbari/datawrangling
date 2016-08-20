@@ -11,6 +11,11 @@ import numpy as np
 import pickle
 from urllib2 import Request, urlopen
 import json
+import sys
+
+#this piece of code handles the ascii data
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ##----Reading JSON from Github API (currently commented our)
 starGaze = pd.read_json('https://api.github.com/repos/realm/jazzy/stargazers')
@@ -33,7 +38,7 @@ columns = ['Name', 'Github Handle', 'Email', 'Company', 'Location', 'Blog', 'Fol
 profile_list = []
 
 ##----Grabbing stargazer user profile
-for i in range(2):
+for i in range(5):
     user_html = 'https://api.github.com/users/'+read_user[i]
     request = Request(user_html)
     response = urlopen(request)
@@ -48,6 +53,6 @@ for i in range(2):
 user_profile = pd.DataFrame(profile_list, columns=columns)
 
 ##----Exporting to CSV
-user_profile.to_csv('example.csv')
+user_profile.to_csv('realm.csv')
 
 #print(user_profile)
