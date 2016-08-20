@@ -20,13 +20,13 @@ sys.setdefaultencoding('utf-8')
 m = Basemap(projection='mill',llcrnrlat=-90,urcrnrlat=90,
         llcrnrlon=-180,urcrnrlon=180,resolution='c')
 m.drawcoastlines()
-m.fillcontinents(color='#b4ddb4',lake_color='aqua')
+m.fillcontinents(color='#638563',lake_color='aqua')
 m.drawmapboundary()
 m.drawcountries()
 m.drawstates()
 
 #This code reads our exported CSV file from previous script
-df = pd.read_csv('realm.csv')
+df = pd.read_csv('realmlocarecvsd.csv')
 
 ##Grouping by user's location
 new_df = df.groupby('Location')
@@ -54,7 +54,8 @@ for i in range(len(x1)):
     
     
 x,y = m(lon,lat)
-m.plot(x, y, c='r')
 m.scatter(x, y, s=size, c='r', marker='o')
+m.plot(x, y, c='r')
+plt.title('Realm stargazers by location')
 
 plt.show()
